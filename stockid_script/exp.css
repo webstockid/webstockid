@@ -119,3 +119,27 @@ input,select {
 	color: #aaa;
 	margin-top: 6px;
 }
+
+.wa-btn{
+	display:inline-block;
+	margin-top:6px;
+	padding:6px 10px;
+	background:#25d366;
+	color:#fff;
+	border-radius:6px;
+	font-size:13px;
+	text-decoration:none;
+}
+
+.warn{
+	display:inline-block;
+	margin-left:6px;
+	padding:2px 6px;
+	border-radius:4px;
+	font-size:11px;
+	color:#fff;
+}
+
+.warn.h7{background:#f1c40f;}
+.warn.h3{background:#e67e22;}
+.warn.expired{background:#e74c3c;}
