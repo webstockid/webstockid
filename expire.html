@@ -169,54 +169,42 @@
 	filter.onchange=render;
 	setInterval(render,10000); //6000
 	render();
+	</script>
 	
+	<script>
+	/* ================= NOTIF 7 HARI ================= */
+	/* ================= WARNING & WA ================= */
+	function warning(ms) {
+		const d = Math.ceil(ms / DAY);
+		if (d <= 0) return "expired";
+		if (d <= 3) return "h3";
+		if (d <= 7) return "h7";
+		return "";
+	}
 	
+	function waText(m, status) {
+		if (status=="h7") return `Halo ${m.nama} 👋
+		Masa aktif Stock ID VIP kamu akan berakhir dalam *7 hari*.
+		Expired: ${m.expired}
+		Yuk perpanjang sekarang supaya tidak terputus 🙏`;
+		
+		if (status=="h3") return `Halo ${m.nama} 👋
+		Masa aktif Stock ID VIP kamu tinggal *3 hari lagi* ⏰
+		Expired: ${m.expired}
+		Segera perpanjang ya 🙏`;
+		
+		if (status=="expired") return `Halo ${m.nama} 👋
+		Masa aktif Stock ID VIP kamu sudah *BERAKHIR* ❌
+		Silakan perpanjang kembali untuk melanjutkan akses 🙏`;
+	}
 
-/* ================= NOTIF 7 HARI ================= */
-function warning(ms) {
-  const d = Math.ceil(ms / DAY);
-  if (d <= 0) return "expired";
-  if (d <= 3) return "h3";
-  if (d <= 7) return "h7";
-  return "";
-}
-
-function waText(m, status) {
-  if (status === "h7")
-    return `Halo ${m.nama} 👋
-Masa aktif Stock ID VIP kamu akan berakhir dalam *7 hari*.
-
-Expired: ${m.expired}
-Yuk perpanjang sekarang supaya tidak terputus 🙏`;
-
-  if (status === "h3")
-    return `Halo ${m.nama} 👋
-Masa aktif Stock ID VIP kamu tinggal *3 hari lagi* ⏰
-
-Expired: ${m.expired}
-Segera perpanjang ya 🙏`;
-
-  if (status === "expired")
-    return `Halo ${m.nama} 👋
-Masa aktif Stock ID VIP kamu sudah *BERAKHIR* ❌
-
-Silakan perpanjang kembali untuk melanjutkan akses 🙏`;
-}
-
-const warn = warning(m.ms);
-const msg = encodeURIComponent(waText(m, warn));
-const waLink = `https://wa.me/${m.wa}?text=${msg}`;
-
-function autoWA(m, status) {
-  const key = `wa_${m.wa}_${status}`;
-  if (localStorage.getItem(key)) return;
-
-  const msg = encodeURIComponent(waText(m, status));
-  window.open(`https://wa.me/${m.wa}?text=${msg}`, "_blank");
-
-  localStorage.setItem(key, "1");
-}
-
+	function autoWA(m, status) {
+		const key = `wa_${m.wa}_${status}`;
+		if (localStorage.getItem(key)) return;
+		const msg = encodeURIComponent(waText(m,status));
+		window.open(`https://wa.me/${m.wa}?text=${msg}`,"_blank");
+		localStorage.setItem(key,"1");
+	}
 	</script>
 	</body>
 </html>
