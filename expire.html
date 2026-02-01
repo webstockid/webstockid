@@ -163,15 +163,17 @@
 			`;
 			list.appendChild(div);
 		});
+		const warn = warning(m.ms);
+const msg = encodeURIComponent(waText(m, warn));
+const waLink = `https://wa.me/${m.wa}?text=${msg}`;
+
 	}
 	
 	search.oninput=render;
 	filter.onchange=render;
 	setInterval(render,10000); //6000
 	render();
-	</script>
 	
-	<script>
 	/* ================= NOTIF 7 HARI ================= */
 	/* ================= WARNING & WA ================= */
 	function warning(ms) {
@@ -206,9 +208,6 @@
 		localStorage.setItem(key,"1");
 	}
 	
-	const warn = warning(m.ms);
-	const msg = encodeURIComponent(waText(m, warn));
-	const waLink = `https://wa.me/${m.wa}?text=${msg}`;
 	</script>
 	</body>
 </html>
