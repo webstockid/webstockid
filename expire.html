@@ -167,42 +167,47 @@
 	
 	
 
-// ================= NOTIF 7 HARI + SUARA =================
-const NOTIF_KEY = "notified_7days";
+/* ================= NOTIF 7 HARI ================= */
+const NOTIF_KEY = "notif_7hari";
 let notified = JSON.parse(localStorage.getItem(NOTIF_KEY)) || {};
 
-// preload audio (bebas ganti file)
-const alertAudio = new Audio("stockid_script/alert.mp3");
+// file suara (wajib ada)
+const alertAudio = new Audio("stockid_suara/alert.mp3");
+alertAudio.preload = "auto";
 
-function check7DaysNotification(members) {
-  const now = Date.now();
-  members.forEach(m => {
-    const end = new Date(m.endDate || m.expired).getTime();
-    const diffDay = Math.ceil((end - now) / 86400000);
+function check7Hari(members){
+	const now = Date.now();
 
-    if (diffDay === 7 && !notified[m.id]) {
-      // browser notif
-      if ("Notification" in window) {
-        if (Notification.permission === "granted") {
-          new Notification("⏰ Masa Aktif Hampir Habis", {
-            body: `${m.nama} tersisa 7 hari lagi`,
-            icon: "stockid_gambar/alert.jpg"
-          });
-        } else if (Notification.permission !== "denied") {
-          Notification.requestPermission();
-        }
-      }
+	members.forEach(m => {
+		const sisaHari = Math.ceil((target(m.expired) - now) / DAY);
 
-      // suara
-      alertAudio.currentTime = 0;
-      alertAudio.play().catch(()=>{});
+		// notif hanya saat TEPAT 7 hari & belum pernah
+		if (sisaHari === 7 && !notified[m.nama]) {
 
-      notified[m.id] = true;
-    }
-  });
+			// 🔔 browser notification
+			if ("Notification" in window) {
+				if (Notification.permission === "granted") {
+					new Notification("⏰ Masa Aktif Hampir Habis", {
+						body: `${m.nama} tersisa 7 hari lagi`,
+						icon: "stockid_gambar/alert.jpg"
+					});
+				} else if (Notification.permission !== "denied") {
+					Notification.requestPermission();
+				}
+			}
 
-  localStorage.setItem(NOTIF_KEY, JSON.stringify(notified));
+			// 🔊 suara
+			alertAudio.currentTime = 0;
+			alertAudio.play().catch(()=>{});
+
+			// simpan agar tidak spam
+			notified[m.nama] = true;
+		}
+	});
+
+	localStorage.setItem(NOTIF_KEY, JSON.stringify(notified));
 }
+
 	</script>
 	</body>
 </html>
