@@ -205,6 +205,10 @@
 		window.open(`https://wa.me/${m.wa}?text=${msg}`,"_blank");
 		localStorage.setItem(key,"1");
 	}
+	
+	const warn = warning(m.ms);
+	const msg = encodeURIComponent(waText(m, warn));
+	const waLink = `https://wa.me/${m.wa}?text=${msg}`;
 	</script>
 	</body>
 </html>
