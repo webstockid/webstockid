@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <!DOCTYPE html PUBLIC '-//WAPFORUM//DTD XHTML Mobile 1.0//EN' 'http://www.wapforum.org/DTD/xhtml-mobile10.dtd'>
 	<head>
@@ -6,16 +6,15 @@
 		<meta charset="UTF-8">
 		<meta name="author" content="Hardiansyah">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-scale=1.0, maximal-scale=1">
-		<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
 		<link rel="manifest" href="manifest.json">
 		<link rel="stylesheet" href="stockid_script/exp.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Fredoka&display=swap" rel="stylesheet">
+		<!--<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
+		<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+		<meta name="theme-color" content="#3498DB">
 		<meta property="og:title" content="Di Tinggal Kekasih Emang Menyakitkan 💔">
 		<meta property="og:description" content="Tapi Pernah Gak Sih Loe Di Tinggal Stock ID VIP? 🗿">
-		<meta name="theme-color" content="#3498db">
 		<meta property="og:image" content="stockid_gambar/thumb.jpg">
 		<meta property="og:url" content="https://webstockid.github.io/exp">
 		<meta property="og:type" content="website">
@@ -38,13 +37,30 @@
 		</select>
 	</div>
 	
-	<button onclick="enableNotif()" class="notif-btn">
+	<button onclick="enableNotif ()" class="notif-btn">
 		🔔 Aktifkan Reminder
 	</button>
 	<audio id="notifSound" src="stockid_suara/notif.mp3"></audio>
-	<br><br>
 	
 	<div id="list"></div>
+	
+	<script>
+	function enableNotif () {
+		if (!("Notification" in window)) {
+			alert("Browser tidak mendukung notifikasi");
+			return;
+		}
+		Notification.requestPermission().then(p=> {
+			if (p==="granted") alert("Notifikasi diaktifkan ✅");
+		});
+	}
+	
+	function pushNotif (title, body) {
+		if (Notification.permission!=="granted") return;
+		new Notification(title,{body:body,icon:"stockid_gambar/alert.jpg",vibrate:[200,100,200]});
+		document.getElementById("notifSound").play().catch(()=> {});
+	}
+	</script>
 
 	<script>
 	/* ================= DATA MEMBER ================= */
@@ -73,7 +89,17 @@
 		{ nama:"Mas. Ihsan", wa:"6282215352174", expired:"2026-04-27", history:[2] },
 		{ nama:"Mba. Dhila", wa:"6289528936511", expired:"2026-04-26", history:[1,1] },
 		{ nama:"Mas. Roid", wa:"6287819304040", expired:"2026-04-25", history:[1,2] },
-		{ nama:"Mas. Made", wa:"6281353043869", expired:"2026-02-05", history:[1,2] }
+		{ nama:"Mas. Made", wa:"6281353043869", expired:"2026-04-24", history:[1,2] },
+		{ nama:"Mba. Tati", wa:"085773015045", expired:"2026-04-21", history:[2] },
+		{ nama:"Mba. Linda", wa:"08112630261", expired:"2026-04-21", history:[2] },
+		{ nama:"Mas. Purna", wa:"089627939527", expired:"2026-04-19", history:[1,2] },
+		{ nama:"Mas. Tomin", wa:"082241230030", expired:"2026-04-11", history:[1] },
+		{ nama:"Mba. Kayla", wa:"081357764067", expired:"2026-04-11", history:[2] },
+		{ nama:"Mas. Danny", wa:"081932677981", expired:"2026-04-09", history:[2] },
+		{ nama:"Mas. Zidan", wa:"082146281427", expired:"2026-04-09", history:[2] },
+		{ nama:"Mba. Viani", wa:"082146281427", expired:"2026-04-09", history:[2] },
+		{ nama:"Mas. Dhio", wa:"082349033673", expired:"2026-04-04", history:[1] },
+		{ nama:"Mas. Ridho", wa:"085839352252", expired:"2026-04-04", history:[1,1] }
 	];
 	
 	const DAY=86400000,HOUR=3600000,MIN=60000;
@@ -166,60 +192,40 @@
 			`;
 			list.appendChild(div);
 		});
-		if(w){
-  const key=notifKey(m,w);
-  if(!localStorage.getItem(key)){
-    let title="⏰ Masa Aktif Member";
-    let msg="";
-    if(w=="h7") msg=`${m.nama} akan expired 7 hari lagi`;
-    if(w=="h3") msg=`${m.nama} tinggal 3 hari lagi`;
-    if(w=="expired") msg=`${m.nama} sudah EXPIRED`;
-    pushNotif(title,msg);
-    localStorage.setItem(key,"1");
-  }
-}
-
+		if (w) {
+			const key=notifKey(m,w);
+			if (!localStorage.getItem(key)) {
+				let title="⏰ Masa Aktif Member";
+				let msg="";
+				if (w=="h7") msg=`${m.nama} akan expired 7 hari lagi`;
+				if (w=="h3") msg=`${m.nama} tinggal 3 hari lagi`;
+				if (w=="expired") msg=`${m.nama} sudah EXPIRED`;
+				pushNotif (title,msg);
+				localStorage.setItem(key,"1");
+			}
+		}
 	}
 	
 	search.oninput=render;
 	filter.onchange=render;
-	setInterval(render,10000); //6000
+	setInterval(render,6000); //6000
 	render();
 	</script>
 	
 	<script>
-	if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('/sw.js').then(reg=>{
-    console.log("Service Worker Registered", reg);
-  }).catch(err=>{
-    console.log("SW Registration failed: ", err);
-  });
-
-  navigator.serviceWorker.addEventListener('message', e=>{
-    if(e.data.type === 'check-reminder'){
-      render(); // trigger reminder H-7, H-3, Expired
-    }
-  });
-}
-</script>
-
-	<script>
-		function enableNotif(){
-  if(!("Notification" in window)){
-    alert("Browser tidak mendukung notifikasi");
-    return;
-  }
-  Notification.requestPermission().then(p=>{
-    if(p==="granted") alert("Notifikasi diaktifkan ✅");
-  });
-}
-
-function pushNotif(title, body){
-  if(Notification.permission!=="granted") return;
-  new Notification(title,{body:body,icon:"stockid_gambar/alert.jpg",vibrate:[200,100,200]});
-  document.getElementById("notifSound").play().catch(()=>{});
-}
-</script>
+	if ('serviceWorker' in navigator) {
+		navigator.serviceWorker.register('/sw.js').then(reg=> {
+			alert("Service Worker Registered", reg);
+		}).catch(err=> {
+			alert("SW Registration failed: ", err);
+		});
+		navigator.serviceWorker.addEventListener('message', e=> {
+			if (e.data.type === 'check-reminder') {
+				render(); // trigger reminder H-7, H-3, Expired
+			}
+		});
+	}
+	</script>
 	
 	</body>
 </html>
