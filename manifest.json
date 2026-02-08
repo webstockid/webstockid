@@ -1,12 +1,12 @@
 {
-  "name":"Monitoring Member VIP",
-  "short_name":"MemberVIP",
-  "start_url":"/exp.html",
-  "display":"standalone",
-  "background_color":"#ffffff",
-  "theme_color":"#3498db",
-  "icons":[
-    {"src":"stockid_gambar/alert.jpg","sizes":"192x192","type":"image/jpg"},
-    {"src":"stockid_gambar/alert.jpg","sizes":"512x512","type":"image/jpg"}
-  ]
+	"name":"Monitoring Member VIP",
+	"short_name":"Masa Aktif",
+	"start_url":"/exp.html",
+	"display":"standalone",
+	"background_color":"#1b1b1b",
+	"theme_color":"#3498db",
+	"icons":[
+		{"src":"stockid_gambar/icon.png","sizes":"192x192","type":"image/png"},
+		{"src":"stockid_gambar/icon.png","sizes":"512x512","type":"image/png"}
+	]
 }

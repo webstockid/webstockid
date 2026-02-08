@@ -44,7 +44,7 @@
 	
 	<div id="list"></div>
 	
-	<script>
+	<script type="text/javascript">
 	function enableNotif () {
 		if (!("Notification" in window)) {
 			alert("Browser tidak mendukung notifikasi");
@@ -62,21 +62,21 @@
 	}
 	</script>
 
-	<script>
+	<script type="text/javascript">
 	/* ================= DATA MEMBER ================= */
 	const members = [
 		{ nama:"Mas. Yayat", wa:"82967078794", expired:"2027-02-21", history:[12] },
 		{ nama:"Mas. Dimas", wa:"6282288133212", expired:"2027-02-11", history:[1,12] },
 		{ nama:"Mas. Devan", wa:"6285800322160", expired:"2026-09-18", history:[1,6] },
 		{ nama:"Mas. Ardha", wa:"6281542779853", expired:"2026-08-25", history:[3,6] },
-		{ nama:"Mas. Vani", wa:"6289662208826", expired:"2026-08-09", history:[6] },
+		{ nama:"Mas. Vani", wa:"62896622628826", expired:"2026-08-09", history:[6] },
 		{ nama:"Mas. Tito", wa:"6281270370727", expired:"2026-06-30", history:[3,3] },
 		{ nama:"Mas. Farhan", wa:"6288221513462", expired:"2026-06-22", history:[1,3] },
 		{ nama:"Mas. Yoga", wa:"6282382795953", expired:"2026-06-18", history:[3,3] },
 		{ nama:"Mas. Dika", wa:"628131093311", expired:"2026-06-02", history:[3] },
 		{ nama:"Mas. Adam", wa:"6282140581317", expired:"2026-05-26", history:[3] },
 		{ nama:"Mas. Tomy", wa:"6289609809039", expired:"2026-05-22", history:[1,2,2] },
-		{ nama:"Mas. Dedi", wa:"6285951568082", expired:"2026-05-21", history:[1,3] },
+		{ nama:"Mas. Dedi", wa:"62859515686282", expired:"2026-05-21", history:[1,3] },
 		{ nama:"Mas. Arif", wa:"6285265337779", expired:"2026-05-16", history:[1,3] },
 		{ nama:"Mas. Ananda", wa:"6282256863256", expired:"2026-05-12", history:[3] },
 		{ nama:"Mas. Anggoro", wa:"6289525567420", expired:"2026-05-10", history:[3] },
@@ -85,24 +85,34 @@
 		{ nama:"Mas. Abdul", wa:"6285704755602", expired:"2026-05-06", history:[1,2] },
 		{ nama:"Mba. Fauziah", wa:"6285753648079", expired:"2026-05-05", history:[1,2] },
 		{ nama:"Mas. Ardan", wa:"628888136363", expired:"2026-04-28", history:[2] },
-		{ nama:"Mas. Dwiky", wa:"628116383088", expired:"2026-04-27", history:[1,1,2] },
+		{ nama:"Mas. Dwiky", wa:"6281163836288", expired:"2026-04-27", history:[1,1,2] },
 		{ nama:"Mas. Ihsan", wa:"6282215352174", expired:"2026-04-27", history:[2] },
 		{ nama:"Mba. Dhila", wa:"6289528936511", expired:"2026-04-26", history:[1,1] },
 		{ nama:"Mas. Roid", wa:"6287819304040", expired:"2026-04-25", history:[1,2] },
 		{ nama:"Mas. Made", wa:"6281353043869", expired:"2026-04-24", history:[1,2] },
-		{ nama:"Mba. Tati", wa:"085773015045", expired:"2026-04-21", history:[2] },
-		{ nama:"Mba. Linda", wa:"08112630261", expired:"2026-04-21", history:[2] },
-		{ nama:"Mas. Purna", wa:"089627939527", expired:"2026-04-19", history:[1,2] },
-		{ nama:"Mas. Tomin", wa:"082241230030", expired:"2026-04-11", history:[1] },
-		{ nama:"Mba. Kayla", wa:"081357764067", expired:"2026-04-11", history:[2] },
-		{ nama:"Mas. Danny", wa:"081932677981", expired:"2026-04-09", history:[2] },
-		{ nama:"Mas. Zidan", wa:"082146281427", expired:"2026-04-09", history:[2] },
-		{ nama:"Mba. Viani", wa:"082146281427", expired:"2026-04-09", history:[2] },
-		{ nama:"Mas. Dhio", wa:"082349033673", expired:"2026-04-04", history:[1] },
-		{ nama:"Mas. Ridho", wa:"085839352252", expired:"2026-04-04", history:[1,1] }
+		{ nama:"Mba. Tati", wa:"6285773015045", expired:"2026-04-21", history:[2] },
+		{ nama:"Mba. Linda", wa:"628112630261", expired:"2026-04-21", history:[2] },
+		{ nama:"Mas. Purna", wa:"6289627939527", expired:"2026-04-19", history:[1,2] },
+		{ nama:"Mas. Tomin", wa:"6282241230030", expired:"2026-04-11", history:[1] },
+		{ nama:"Mba. Kayla", wa:"6281357764067", expired:"2026-04-11", history:[2] },
+		{ nama:"Mas. Danny", wa:"6281932677981", expired:"2026-04-09", history:[2] },
+		{ nama:"Mas. Zidan", wa:"6282146281427", expired:"2026-04-09", history:[2] },
+		{ nama:"Mba. Viani", wa:"6282146281427", expired:"2026-04-09", history:[2] },
+		{ nama:"Mas. Dhio", wa:"6282349033673", expired:"2026-04-04", history:[1] },
+		{ nama:"Mas. Ridho", wa:"6285839352252", expired:"2026-04-04", history:[1,1] },
+		{ nama:"Mas. Rachmad", wa:"6288989669913", expired:"2026-04-03", history:[1,1] },
+		{ nama:"Mas. Resky", wa:"6282125867841", expired:"2026-04-03", history:[1] },
+		{ nama:"Mas. Gias", wa:"6285974635148", expired:"2026-04-01", history:[1] },
+		{ nama:"Mba. Lukita", wa:"6282244816942", expired:"2026-04-01", history:[1] },
+		{ nama:"Mas. Rizal", wa:"6282190537612", expired:"2026-03-31", history:[1] },
+		{ nama:"Mas. Iram", wa:"6281391330905", expired:"2026-03-31", history:[1] },
+		{ nama:"Mas. Alvi", wa:"6282112373026", expired:"2026-03-30", history:[1,1] },
+		{ nama:"Mas. Agung", wa:"6281907273068", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Erwin", wa:"6282284955923", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Ahmad", wa:"6289610006606", expired:"2026-03-30", history:[1] },
 	];
 	
-	const DAY=86400000,HOUR=3600000,MIN=60000;
+	const DAY=86400000,HOUR=3600000,MIN=60000,SEC=1000;
 	const lastMonth=m=>m.history.at(-1)||0;
 	const target=d=>new Date(d+"T00:00:00").getTime();
 	
@@ -112,7 +122,8 @@
 		const h=Math.floor(ms/DAY);
 		const j=Math.floor(ms%DAY/HOUR);
 		const m=Math.floor(ms%HOUR/MIN);
-		return `${h} Hari ${j} Jam ${m} Menit`;
+		const d=Math.floor(ms%MIN/SEC);
+		return `${h} Hari ${j} Jam ${m} Menit ${d} Detik`;
 	}
 	
 	function kelas(b,ms) {
@@ -167,6 +178,12 @@
 		});
 	}
 	
+	function initStat() {
+		members.forEach(m => m.ms = target(m.expired) - Date.now());
+		const sorted = [...members].sort((a,b)=>b.ms - a.ms);
+		renderStat(sorted);
+	}
+	
 	/* ================= RENDER ================= */
 	function render() {
 		const list=document.getElementById("list");
@@ -175,7 +192,7 @@
 		const f=filter.value;
 		members.forEach(m=>m.ms=target(m.expired)-Date.now());
 		const sorted=[...members].sort((a,b)=>b.ms-a.ms);
-		renderStat(sorted);
+		//renderStat(sorted);
 		sorted.forEach(m=> {
 			const lm=lastMonth(m);
 			if (!m.nama.toLowerCase().includes(key)) return;
@@ -208,11 +225,12 @@
 	
 	search.oninput=render;
 	filter.onchange=render;
-	setInterval(render,6000); //6000
+	initStat();
+	setInterval(render, 1000); // hanya list yang update
 	render();
 	</script>
 	
-	<script>
+	<script type="text/javascript">
 	if ('serviceWorker' in navigator) {
 		navigator.serviceWorker.register('/sw.js').then(reg=> {
 			alert("Service Worker Registered", reg);
