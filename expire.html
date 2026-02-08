@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<!--<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>-->
-		<link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Parkinsans&display=swap" rel="stylesheet">
 		<meta name="theme-color" content="#3498DB">
 		<meta property="og:title" content="Di Tinggal Kekasih Emang Menyakitkan 💔">
 		<meta property="og:description" content="Tapi Pernah Gak Sih Loe Di Tinggal Stock ID VIP? 🗿">
@@ -22,24 +22,26 @@
 	
 	<body>
 	<h2>Monitoring Masa Aktif Member</h2>
+	<div id="activeSummary" class="active-summary"></div>
 	
 	<div class="stat-box" id="statistik"></div>
 	<div class="controls">
 		<input id="search" placeholder="Cari nama kamu...">
 		<select id="filter">
-			<option value="all">Semua</option>
-			<option value="1">1 Bulan</option>
-			<option value="2">2 Bulan</option>
-			<option value="3">3 Bulan</option>
-			<option value="6">6 Bulan</option>
-			<option value="12">1 Tahun</option>
-			<option value="expired">Expired</option>
+			<option value="all">Semua 👻</option>
+			<option value="1">1 Bulan 😏</option>
+			<option value="2">2 Bulan 🙂‍↔️</option>
+			<option value="3">3 Bulan 😌</option>
+			<option value="6">6 Bulan ☺️</option>
+			<option value="12">1 Tahun 😍</option>
+			<option value="expired">Expired 🥱</option>
 		</select>
 	</div>
 	
 	<button onclick="enableNotif ()" class="notif-btn">
-		🔔 Aktifkan Reminder
+		<i class="fa fa-bullhorn"></i> Aktifkan Reminder
 	</button>
+	
 	<audio id="notifSound" src="stockid_suara/notif.mp3"></audio>
 	
 	<div id="list"></div>
@@ -61,7 +63,7 @@
 		document.getElementById("notifSound").play().catch(()=> {});
 	}
 	</script>
-
+	
 	<script type="text/javascript">
 	/* ================= DATA MEMBER ================= */
 	const members = [
@@ -110,6 +112,18 @@
 		{ nama:"Mas. Agung", wa:"6281907273068", expired:"2026-03-30", history:[1] },
 		{ nama:"Mas. Erwin", wa:"6282284955923", expired:"2026-03-30", history:[1] },
 		{ nama:"Mas. Ahmad", wa:"6289610006606", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Ega", wa:"082371646313", expired:"2026-03-31", history:[1] },
+		{ nama:"Mba. Jasmine", wa:"089527787810", expired:"2026-03-31", history:[1] },
+		{ nama:"Mas. Rahman", wa:"081233704317", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Annur", wa:"08558895157", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Pandya", wa:"081286977138", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Hadi", wa:"081934151515", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Hamid", wa:"085546399043", expired:"2026-03-31", history:[1] },
+		{ nama:"Mas. Izzudin", wa:"081910019807", expired:"2026-03-31", history:[1] },
+		{ nama:"Mas. Satya", wa:"085263019463", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Ilham", wa:"082229069298", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Jefri", wa:"0895322198674", expired:"2026-03-30", history:[1] },
+		{ nama:"Mas. Muazin", wa:"081391334236", expired:"2026-03-30", history:[1,1] },
 	];
 	
 	const DAY=86400000,HOUR=3600000,MIN=60000,SEC=1000;
@@ -201,11 +215,11 @@
 			const div=document.createElement("div");
 			div.className="member "+kelas(lm,m.ms);
 			div.innerHTML=`
-			<b>Nama: ${m.nama}</b><br>
-			Expired: ${m.expired}<br>
-			Sisa Waktu: ${sisa(m.ms)}
+			<b><i class='fa fa-user-circle-o'></i> Nama: ${m.nama}</b><br>
+			<i class='fa fa-hourglass-1 fa-spin'></i> Expired: ${m.expired}<br>
+			<i class='fa fa-circle-o-notch fa-spin'></i> Sisa Waktu: ${sisa(m.ms)}
 			<span class="badge">${badge(m.history)}</span>
-			<div class="history">Join Kelas: ${join(m.history)}</div>
+			<div class="history"><i class='fa fa-vcard-o'></i> Join Kelas: ${join(m.history)}</div>
 			`;
 			list.appendChild(div);
 		});
@@ -226,7 +240,7 @@
 	search.oninput=render;
 	filter.onchange=render;
 	initStat();
-	setInterval(render, 1000); // hanya list yang update
+	setInterval(render, 6000); // hanya list yang update
 	render();
 	</script>
 	
