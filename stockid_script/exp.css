@@ -23,7 +23,6 @@ body, div, span, button, p, b, a {
 .stat-box {
 	margin-bottom: 20px;
 	padding: 16px;
-	color: #eee;
 	background: #1b1b1b;
 	border-radius: 16px;
 }
@@ -35,6 +34,7 @@ body, div, span, button, p, b, a {
 .stat-label {
 	margin-bottom: 4px;
 	font-size: 14px;
+	color: #eee;
 }
 
 .bar {
@@ -106,19 +106,29 @@ body, div, span, button, p, b, a {
 
 input, select {
 	outline: none;
-	margin: 0;
 	padding: 8px;
+	font-size: 14px;
 	color: #fff;
 	background: #1b1b1b;
 	border: 1px solid #eee;
 	border-radius: 6px;
 	transition: 1s;
 	-webkit-transition: 1s;
+	z-index: 500;
+}
+
+input {
+	max-width: 30%;
+	bottom: 10px;
+	left: 12px;
+	position: fixed;
 }
 
 input:hover {
-	border: 1px solid dodgerblue;
-	border-radius: 12px;
+	max-width: 75%;
+	border: 1px solid #333;
+	border-radius: 12px 0 12px 0;
+	box-shadow: 4px 0 14px #333, 4px 0 14px rgba(52,152,219,.95);
 }
 
 /* ================= MEMBER ================= */
@@ -126,12 +136,12 @@ input:hover {
 	position: relative;
 	overflow: visible;
 	margin-bottom: 12px;
-	padding: 10px;
-	padding-left: 14px;
-	font-size: 16px;
+	padding: 6px;
+	padding-left: 12px;
+	font-size: 14px;
 	color: #eee;
 	background: #222;
-	border-radius: 0 12px 12px 0;
+	border-radius: 2px 12px 12px 2px;
 	transition: background-color 1s ease, color 1s ease;
 }
 
@@ -177,6 +187,7 @@ input:hover {
 	position: absolute;
 	width: 6px;
 	height: 100%;
+	border-right: 2px solid #333;
 	border-radius: 6px 0 0 6px;
 	z-index: 100;
 	filter: drop-shadow(-6px 0 14px rgba(0,0,0,.45));
@@ -212,9 +223,9 @@ input:hover {
 }
 
 .member.expired::before {
-	background: linear-gradient(to bottom,#f1948a,#e74c3c,#c0392b);
-	box-shadow: -3px 0 8px rgba(231,76,60,.7);
-	opacity:.7;
+	background: linear-gradient(to bottom,#f44336,#f44336,#f44336);
+	box-shadow: -4px 0 14px #f44336, -10px 0 20px rgba(231,76,60,.7);
+	opacity: 1;
 }
 
 /*.satu {border-left: 5px solid #03a9f4;}
@@ -230,8 +241,8 @@ input:hover {
 	right: 10px;
 	position: absolute;
 	padding: 4px 4px;
-	font-size: 12px;
-	color: snow;
+	font-size: 10px;
+	color: whitesmoke;
 	background: #333;
 	border-radius: 12px;
 	box-shadow: 0 0 3px rgba(255,255,255,.3);
@@ -251,19 +262,20 @@ input:hover {
 
 .history {
 	margin-top: 6px;
-	font-size: 14px;
+	font-size: 12px;
 	color: #ddd;
 }
 
 .notif-btn {
-	left: 16px;
-	bottom: 10px;
+	right: 14px;
+	bottom: 8px;
 	position: fixed;
 	margin-bottom:10px;
 	padding: 4px 6px;
-	color:#fff;
+	font-size: 14px;
+	color: #eee;
 	background: dodgerblue; /*3498db;*/;
-	border: 1px solid #fff;
+	border: 1px solid #eee;
 	border-radius: 6px;
 	z-index: 300;
 	transition: 1.2s;
