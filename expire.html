@@ -24,9 +24,10 @@
 	<h2>Monitoring Masa Aktif Member</h2>
 	<div id="activeSummary" class="active-summary"></div>
 	
+	<input id="search" placeholder="Cari nama kamu...">
+	
 	<div class="stat-box" id="statistik"></div>
 	<div class="controls">
-		<input id="search" placeholder="Cari nama kamu...">
 		<select id="filter">
 			<option value="all">Semua 👻</option>
 			<option value="1">1 Bulan 😏</option>
@@ -223,6 +224,7 @@
 			`;
 			list.appendChild(div);
 		});
+		
 		if (w) {
 			const key=notifKey(m,w);
 			if (!localStorage.getItem(key)) {
@@ -240,7 +242,7 @@
 	search.oninput=render;
 	filter.onchange=render;
 	initStat();
-	setInterval(render, 6000); // hanya list yang update
+	setInterval(render, 12000); // hanya list yang update
 	render();
 	</script>
 	
